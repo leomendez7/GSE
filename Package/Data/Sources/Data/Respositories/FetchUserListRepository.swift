@@ -10,14 +10,14 @@ import Domain
 
 public class FetchUserListRepository: FetchUsersListRepositoryProtocol {
     
-    let dataSource: FetchUserListDataSource
+    let datasource: FetchUserListDataSource
     
-    public init(dataSource: FetchUserListDataSource) {
-        self.dataSource = dataSource
+    public init(datasource: FetchUserListDataSource) {
+        self.datasource = datasource
     }
     
     public func fetchUsersList() async throws -> [User] {
-        return try await dataSource.fetchUsersList()
+        return try await datasource.fetchUsersList()
     }
     
 }
