@@ -9,7 +9,7 @@ import Combine
 import Domain
 import Shared
 
-public class UserListViewModel: BaseViewModel<FetchUsersListUseCase, UserListFlowCoordinator> {
+public class UserListViewModel: BaseViewModel<FetchUsersListUseCase, UserFlowCoordinator> {
     
     var reloadData = PassthroughSubject<Void, Error>()
     @Published var users: [User] = []

@@ -12,10 +12,11 @@ final class UseCasesContainer {
     
     class func reloadLoginUseCases() {
         RepositoriesContainer.reloadLoginRepositories()
-        UseCasesContainer.fetchUserListUseCase = FetchUsersListUseCase(repository: RepositoriesContainer.fetchUserRepository)
-        
+        UseCasesContainer.fetchUsersListUseCase = FetchUsersListUseCase(repository: RepositoriesContainer.fetchUsersRepository)
+        UseCasesContainer.fetchUserInformationUseCase = FetchUserInformationUseCase(repository: RepositoriesContainer.fetchUserInformationRepository)
     }
     
-    static var fetchUserListUseCase = FetchUsersListUseCase(repository: RepositoriesContainer.fetchUserRepository)
+    static var fetchUsersListUseCase = FetchUsersListUseCase(repository: RepositoriesContainer.fetchUsersRepository)
+    static var fetchUserInformationUseCase = FetchUserInformationUseCase(repository: RepositoriesContainer.fetchUserInformationRepository)
     
 }

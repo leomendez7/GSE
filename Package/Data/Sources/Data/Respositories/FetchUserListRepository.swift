@@ -10,9 +10,9 @@ import Domain
 
 public class FetchUserListRepository: FetchUsersListRepositoryProtocol {
     
-    let datasource: FetchUserListDataSource
+    let datasource: FetchUsersListDataSource
     
-    public init(datasource: FetchUserListDataSource) {
+    public init(datasource: FetchUsersListDataSource) {
         self.datasource = datasource
     }
     

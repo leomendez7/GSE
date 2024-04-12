@@ -10,13 +10,12 @@ import Foundation
 import Presentation
 import Domain
 
-
-final class UsersListContainer: UserListFactory {
+final class UserContainer: UserListFactory {
     
-    static let shared = UsersListContainer()
+    static let shared = UserContainer()
     
-    lazy var userListCoordinator: UserListFlowCoordinator = {
-        return UserListFlowCoordinator(factory: self)
+    lazy var userCoordinator: UserFlowCoordinator = {
+        return UserFlowCoordinator(factory: self)
     }()
     
     private init() {
@@ -32,9 +31,17 @@ final class UsersListContainer: UserListFactory {
     }
     
     private var userListViewModel: UserListViewModel {
-        let coordinator = userListCoordinator
-        let viewModel = UserListViewModel(useCase: UseCasesContainer.fetchUserListUseCase,
+        let coordinator = userCoordinator
+        let viewModel = UserListViewModel(useCase: UseCasesContainer.fetchUsersListUseCase,
                               coordinator: coordinator)
+        return viewModel
+    }
+    
+    private func userDetailsViewModel(userId: String) -> UserDetailsViewModel {
+        let coordinator = userCoordinator
+        let viewModel = UserDetailsViewModel(useCase: UseCasesContainer.fetchUserInformationUseCase,
+                              coordinator: coordinator)
+        viewModel.userId = userId
         return viewModel
     }
     
@@ -47,11 +54,12 @@ final class UsersListContainer: UserListFactory {
         return viewController
     }
    
-    func userDetailsViewController() -> UserDetailsViewController {
-        let identifier = "Login"
-        let storyBoard = UIStoryboard(name: identifier, bundle: nil)
+    @MainActor
+    func userDetailsViewController(userId: String) -> UserDetailsViewController {
+        let identifier = "UserDetails"
+        let storyBoard = UIStoryboard(name: identifier, bundle: Presentation.bundle)
         let viewController = storyBoard.instantiateViewController(identifier: identifier) { coder in
-            return UserDetailsViewController()
+            return UserDetailsViewController(viewModel: self.userDetailsViewModel(userId: userId), coder: coder)
         }
         return viewController
     }

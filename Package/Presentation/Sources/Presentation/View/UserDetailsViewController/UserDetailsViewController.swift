@@ -6,25 +6,58 @@
 //
 
 import UIKit
+import Domain
+import Combine
 
 @MainActor
-public class UserDetailsViewController: UIViewController {
-
+public class UserDetailsViewController: BaseViewController<UserDetailsViewModel> {
+    
+    private var anyCancellable = Set<AnyCancellable>()
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var websiteLabel: UILabel!
+    @IBOutlet weak var companyLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        title = "User Information"
+        subscribeToViewModel()
+        Task {
+            await viewModel.fetchUser()
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func subscribeToViewModel() {
+        viewModel.reloadData.receive(on: DispatchQueue.main).sink { _  in } receiveValue: { _ in
+            self.configureLabels(user: self.viewModel.user)
+        }.store(in: &anyCancellable)
     }
-    */
+    
+    func configureLabels(user: User?) {
+        guard let user = user else { return }
+        let attributedString = NSAttributedString(string: user.website, attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
+        nameLabel.text = user.name
+        emailLabel.text = user.email
+        phoneLabel.text = user.phone
+        userNameLabel.text = user.username
+        addressLabel.text = "\(user.address.street), \(user.address.suite), \(user.address.city), \(user.address.zipcode)"
+        companyLabel.text = user.company.name
+        descriptionLabel.text = user.company.catchPhrase
+        websiteLabel.attributedText = attributedString
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        websiteLabel.isUserInteractionEnabled = true
+        websiteLabel.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func handleTap() {
+        if let url = URL(string: "https://jsonplaceholder.typicode.com/users/\(viewModel.userId ?? "")") {
+            UIApplication.shared.open(url)
+        }
+    }
 
 }

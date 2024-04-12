@@ -16,6 +16,8 @@ public class UsersListViewController: BaseViewController<UserListViewModel> {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Users List"
+        navigationController?.navigationBar.prefersLargeTitles = true
         viewModel.coordinator.navigationController = navigationController
         subscribeToViewModel()
         Task { await self.viewModel.fetchUsers() }
@@ -46,6 +48,12 @@ extension UsersListViewController: UITableViewDataSource, UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel
+            .coordinator
+            .navigate(to: .userDetails(userId: "\(viewModel.users[indexPath.row].id)"))
     }
     
 }

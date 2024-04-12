@@ -24,7 +24,7 @@ class MainViewController: UIViewController {
     func setupRootViewController() {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
         guard let delegate = windowScene.delegate as? SceneDelegate, let window = delegate.window else { return }
-        let usersListViewController = UsersListContainer.shared.usersListViewController()
+        let usersListViewController = UserContainer.shared.usersListViewController()
         window.rootViewController = UINavigationController(rootViewController: usersListViewController)
     }
 

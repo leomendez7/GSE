@@ -21,7 +21,7 @@
 		161AA28B2BC8DC970013FC49 /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 161AA28A2BC8DC970013FC49 /* Domain */; };
 		161AA28D2BC8DC970013FC49 /* Presentation in Frameworks */ = {isa = PBXBuildFile; productRef = 161AA28C2BC8DC970013FC49 /* Presentation */; };
 		161AA28F2BC8DC970013FC49 /* Shared in Frameworks */ = {isa = PBXBuildFile; productRef = 161AA28E2BC8DC970013FC49 /* Shared */; };
-		161AA2912BC8E0EA0013FC49 /* UsersListContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161AA2902BC8E0EA0013FC49 /* UsersListContainer.swift */; };
+		161AA2912BC8E0EA0013FC49 /* UserContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161AA2902BC8E0EA0013FC49 /* UserContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +41,7 @@
 		161AA27E2BC8C1C60013FC49 /* RepositoriesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesContainer.swift; sourceTree = "<group>"; };
 		161AA2802BC8C1D40013FC49 /* UseCasesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCasesContainer.swift; sourceTree = "<group>"; };
 		161AA2852BC8DB860013FC49 /* APIClientContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientContainer.swift; sourceTree = "<group>"; };
-		161AA2902BC8E0EA0013FC49 /* UsersListContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListContainer.swift; sourceTree = "<group>"; };
+		161AA2902BC8E0EA0013FC49 /* UserContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +114,7 @@
 				161AA27E2BC8C1C60013FC49 /* RepositoriesContainer.swift */,
 				161AA2802BC8C1D40013FC49 /* UseCasesContainer.swift */,
 				161AA2852BC8DB860013FC49 /* APIClientContainer.swift */,
-				161AA2902BC8E0EA0013FC49 /* UsersListContainer.swift */,
+				161AA2902BC8E0EA0013FC49 /* UserContainer.swift */,
 			);
 			path = DIContainers;
 			sourceTree = "<group>";
@@ -223,7 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				161AA2912BC8E0EA0013FC49 /* UsersListContainer.swift in Sources */,
+				161AA2912BC8E0EA0013FC49 /* UserContainer.swift in Sources */,
 				161AA2862BC8DB860013FC49 /* APIClientContainer.swift in Sources */,
 				161AA2632BC8B7F70013FC49 /* MainViewController.swift in Sources */,
 				161AA2812BC8C1D40013FC49 /* UseCasesContainer.swift in Sources */,

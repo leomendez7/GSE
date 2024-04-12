@@ -8,32 +8,32 @@
 import UIKit
 import Domain
 
-public enum UserListFlowRoute {
+public enum UserFlowRoute {
     
     case usersList
-    case userDetails
+    case userDetails(userId: String)
     
 }
 
-public class UserListFlowCoordinator: BaseFlowCoordinator {
+public class UserFlowCoordinator: BaseFlowCoordinator {
     
     public var navigationController: UINavigationController?
     public var factory: UserListFactory
     
-    private lazy var userDetailsViewController: UserDetailsViewController = {
-       return factory.userDetailsViewController()
-    }()
+//    private lazy var userDetailsViewController: UserDetailsViewController = {
+//        return factory.userDetailsViewController(userId: <#String#>)
+//    }()
     
     public init(factory: UserListFactory) {
         self.factory = factory
     }
         
-    public func navigate(to flowRoute: UserListFlowRoute) {
+    public func navigate(to flowRoute: UserFlowRoute) {
         switch flowRoute {
         case .usersList:
             showUsersList()
-        case .userDetails:
-            showUserDetails()
+        case .userDetails(let userId):
+            showUserDetails(userId: userId)
         }
     }
     
@@ -42,8 +42,8 @@ public class UserListFlowCoordinator: BaseFlowCoordinator {
     private func showUsersList() {
     }
     
-    private func showUserDetails() {
-        let userDetailsViewController = factory.userDetailsViewController()
+    private func showUserDetails(userId: String) {
+        let userDetailsViewController = factory.userDetailsViewController(userId: userId)
         navigationController?.pushViewController(userDetailsViewController, animated: true)
     }
     

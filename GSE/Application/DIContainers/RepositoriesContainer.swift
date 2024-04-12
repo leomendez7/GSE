@@ -14,10 +14,12 @@ final class RepositoriesContainer {
     class func reloadLoginRepositories() {
         DataSourcesContainer.reloadLoginApiClients()
         
-        RepositoriesContainer.fetchUserRepository = FetchUserListRepository(datasource: DataSourcesContainer.fetchUserListDataSource)
+        RepositoriesContainer.fetchUsersRepository = FetchUserListRepository(datasource: DataSourcesContainer.fetchUserListDataSource)
+        RepositoriesContainer.fetchUserInformationRepository = FetchUserInformationRepository(datasource: DataSourcesContainer.fetchUserInformationDataSource)
         
     }
     
-    static var fetchUserRepository = FetchUserListRepository(datasource: DataSourcesContainer.fetchUserListDataSource)
+    static var fetchUsersRepository = FetchUserListRepository(datasource: DataSourcesContainer.fetchUserListDataSource)
+    static var fetchUserInformationRepository = FetchUserInformationRepository(datasource: DataSourcesContainer.fetchUserInformationDataSource)
     
 }

@@ -11,6 +11,6 @@ import Domain
 public protocol UserListFactory {
     
     func usersListViewController() -> UsersListViewController
-    func userDetailsViewController() -> UserDetailsViewController
+    func userDetailsViewController(userId: String) -> UserDetailsViewController
     
 }

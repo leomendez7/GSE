@@ -13,6 +13,7 @@ class UsersListTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var websiteLabel: UILabel!
+    @IBOutlet weak var backgroundCellView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +26,8 @@ class UsersListTableViewCell: UITableViewCell {
     func configure(user: User) {
         nameLabel.text = user.name
         emailLabel.text = user.email
-        websiteLabel.text = user.website
+        websiteLabel.text = "Website: \(user.website)"
+        backgroundCellView.layer.cornerRadius = 16
     }
     
 }

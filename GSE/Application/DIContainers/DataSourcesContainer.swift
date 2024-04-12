@@ -12,9 +12,10 @@ import Domain
 final class DataSourcesContainer {
     
     class func reloadLoginApiClients() {
-        DataSourcesContainer.fetchUserListDataSource = FetchUserListDataSource(apiClient: APIClientContainer.apiClient)
+        DataSourcesContainer.fetchUserListDataSource = FetchUsersListDataSource(apiClient: APIClientContainer.apiClient)
+        DataSourcesContainer.fetchUserInformationDataSource = FetchUserInformationDataSource(apiClient: APIClientContainer.apiClient)
     }
     
-    static var fetchUserListDataSource = FetchUserListDataSource(apiClient: APIClientContainer.apiClient)
-    
+    static var fetchUserListDataSource = FetchUsersListDataSource(apiClient: APIClientContainer.apiClient)
+    static var fetchUserInformationDataSource = FetchUserInformationDataSource(apiClient: APIClientContainer.apiClient)
 }
