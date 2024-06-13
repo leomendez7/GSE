@@ -7,7 +7,6 @@
 
 import Foundation
 import Domain
-import Shared
 import Combine
 
 public class UserDetailsViewModel: BaseViewModel<FetchUserInformationUseCase, UserFlowCoordinator> {
@@ -21,9 +20,8 @@ public class UserDetailsViewModel: BaseViewModel<FetchUserInformationUseCase, Us
             let user = try await useCase.execute(requestValue: userId ?? "")
             self.user = user
             reloadData.send()
-            AppLogger.info(user)
         } catch let error {
-            AppLogger.error(error.localizedDescription, context: error)
+            print(error.localizedDescription)
         }
     }
     
