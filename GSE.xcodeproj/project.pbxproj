@@ -110,10 +110,10 @@
 		161AA2792BC8BBAA0013FC49 /* DIContainers */ = {
 			isa = PBXGroup;
 			children = (
+				161AA2852BC8DB860013FC49 /* APIClientContainer.swift */,
 				161AA27C2BC8C1B80013FC49 /* DataSourcesContainer.swift */,
 				161AA27E2BC8C1C60013FC49 /* RepositoriesContainer.swift */,
 				161AA2802BC8C1D40013FC49 /* UseCasesContainer.swift */,
-				161AA2852BC8DB860013FC49 /* APIClientContainer.swift */,
 				161AA2902BC8E0EA0013FC49 /* UserContainer.swift */,
 			);
 			path = DIContainers;

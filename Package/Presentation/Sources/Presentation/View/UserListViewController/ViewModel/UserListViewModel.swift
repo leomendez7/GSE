@@ -5,9 +5,9 @@
 //  Created by Leonardo Mendez on 11/04/24.
 //
 
+import Foundation
 import Combine
 import Domain
-import Shared
 
 public class UserListViewModel: BaseViewModel<FetchUsersListUseCase, UserFlowCoordinator> {
     
@@ -19,9 +19,8 @@ public class UserListViewModel: BaseViewModel<FetchUsersListUseCase, UserFlowCoo
             let users = try await useCase.execute(requestValue: "")
             self.users = users
             reloadData.send()
-            AppLogger.info(users)
         } catch let error {
-            AppLogger.error(error.localizedDescription, context: error)
+            print(error.localizedDescription)
         }
     }
     

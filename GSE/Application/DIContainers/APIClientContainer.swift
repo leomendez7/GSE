@@ -8,22 +8,20 @@
 import Foundation
 import Data
 import Domain
-import Alamofire
 
 final class APIClientContainer {
-
-    class var apiClient: APIClient {
-        return APIClientFactory.createClient()
+    
+    class var urlBase: String {
+        return APIClientFactory.createUrl()
     }
     
 }
 
 private class APIClientFactory {
     
-    fileprivate static func createClient() -> APIClient {
+    fileprivate static func createUrl() -> String {
         let host = "https://jsonplaceholder.typicode.com/"
-        let server = DefaultAPIServer(host: host)
-        return APIClient(server: server, session: Session())
+        return host
     }
     
 }
